@@ -25,7 +25,9 @@ function onConnect(socket)
     
     socket.on('disconnect', function(){
         console.log("A user disconnected!");
+        socket.broadcast.emit('leaver', {"id": socket.id});
         delete players[socket.id];
+        console.log(players);
     });
 }
 /*
